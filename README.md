@@ -1,4 +1,4 @@
-# robust 2 view geometry via convex relaxations
+# robust 3D Geometric vision via convex relaxations
 ## Here are the prerequisites for running the code
 * Matlab, e.g. Matlab r2018b
 * [CVX](http://cvxr.com/cvx/doc/install.html)
