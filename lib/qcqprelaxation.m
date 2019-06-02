@@ -166,7 +166,7 @@ end
 
 %% Use cvx to squietolve the QCQP
 % cvx_solver sedumi
-cvx_solver mosek
+cvx_solver sedumi
 if ~options.CVXDisp
     if options.QCQPDisp
         disp('CVX set quiet.')
