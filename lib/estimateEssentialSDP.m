@@ -15,7 +15,13 @@ dim_x = dim_e + dim_t;
 C = zeros(dim_e,dim_e);
 % first calculate C based on Eq. (12)
 % TODO
-
+for i = 1:9
+    gi(i) = kron(bearing2(:,i),bearing1(:,i));
+    gj(i) = transpose(gi(i));
+    C(i)=gi(i)*gj(i);
+end
+C = sum(C);
+    
 % Build Q from C by adding zeros
 Q = zeros(dim_x,dim_x);
 Q = [C, zeros(dim_e,dim_t); zeros(dim_t,dim_e), zeros(dim_t,dim_t)];
@@ -31,7 +37,29 @@ A1 = zeros(dim_x,dim_x);
 A1(1,1)=1; A1(4,4)=1; A1(7,7)=1; A1(11,11)=-1; A1(12,12)=-1;
 A(:,:,1) = A1;
 % build A2 (15b)
-
+A2 = zeros(dim_x,dim_x);
+A2(2,2)=1; A2(5,5)=1; A2(8,8)=1; A2(10,10)=-1; A2(12,12)=-1;
+A(:,:,2) = A2;
+%build A3 (15c)
+A3 = zeros(dim_x,dim_x);
+A3(3,3)=1; A3(6,6)=1; A3(9,9)=1; A3(10,10)=-1; A3(11,11)=-1;
+A(:,:,3) = A3;
+%build A4 (15d)
+A4 = zeros(dim_x,dim_x);
+A4(1,1)=1; A4(2,2)=1; A4(4,4)=1; A4(5,5)=1; A4(7,7)=1; A4(8,8)=1; A4(10,10)=1; A4(11,11)=1;
+A(:,:,4) = A4;
+%build A5 (15e)
+A5 = zeros(dim_x,dim_x);
+A5(1,1)=1; A5(3,3)=1; A5(4,4)=1; A5(6,6)=1; A5(7,7)=1; A5(9,9)=1; A5(10,10)=1; A5(12,12)=1;
+A(:,:,5) = A5;
+%build A6 (15f)
+A6 = zeros(dim_x,dim_x);
+A6(2,2)=1; A6(3,3)=1; A6(5,5)=1; A6(6,6)=1; A6(8,8)=1; A6(9,9)=1; A6(11,11)=1; A6(12,12)=1;
+A(:,:,6) = A6;
+%build A7 (15g)
+A7 = zeros(dim_x,dim_x);
+A7(10,10)=1; A7(11,11)=1; A7(12,12)=1;
+A(:,:,7) = A7;
 
 
 
